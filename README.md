@@ -2,9 +2,9 @@
 
 Hello! And welcome to the Bloom & Wild coding exercise. 
 
-We recommend you spend around 3-4 hours over this exercise, but how much time you take is up to you. Read through the brief below for details of what to do and what we're looking for.
+We recommend you spend around 2 hours over this exercise, but how much time you take is up to you. Read through the brief below for details of what to do and what we're looking for.
 
-When you've finished please email sharon@bloomandwild.com and adam@bloomandwild.com and we'll arrange a time to discuss your work on the exercise. If you have any questions, just drop us an email. 
+When you've finished please email sharon@bloomandwild.com and tom@bloomandwild.com and we'll arrange a time to discuss your work on the exercise. If you have any questions, just drop us an email. 
 
 ## Test brief
 
