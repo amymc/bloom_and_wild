@@ -14,6 +14,8 @@ angular.module('myApp.checkout', ['ngRoute'])
   $scope.bouquets = FlowersEndpoint.collections[0].skus;
 
   $scope.deliveriesNum = 1;
+  $scope.currentDate = new Date().toString();
+  console.log('date', $scope.currentDate);
 
   $scope.shippingOptions = [
     {

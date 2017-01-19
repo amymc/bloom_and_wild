@@ -1,8 +1,8 @@
 <div ng-controller="Checkout">
-  <ul class='checkout-grid'>
-    <li class='checkout-grid__item' ng-repeat="bouquet in bouquets">
+  <ul class="checkout-grid">
+    <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
       <span>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</span>
-      <img class='checkout-grid__item-image' alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
+      <img class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
     </li>
   </ul>
   <label>Number:
@@ -13,6 +13,9 @@
     <option ng-repeat="shippingOption in shippingOptions">{{shippingOption.type}}</option>
   </select>
 
+  <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}">
+    <input placeholder="choose a delivery date" type="text"/>
+  </datepicker>
   <p> Total Price &pound;</p>
 
 </div>
