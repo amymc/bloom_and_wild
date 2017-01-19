@@ -15,7 +15,6 @@ angular.module('myApp.checkout', ['ngRoute'])
 
   $scope.deliveriesNum = 1;
   $scope.currentDate = new Date().toString();
-  console.log('date', $scope.currentDate);
 
   $scope.shippingOptions = [
     {

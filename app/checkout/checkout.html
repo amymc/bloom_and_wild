@@ -3,19 +3,22 @@
     <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
       <span>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</span>
       <img class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
+      <button scroll-to="checkout-info">Order {{bouquet.name}}</button>
     </li>
   </ul>
-  <label>Number:
-    <input type="number" name="input" ng-model="deliveriesNum" min="1" required>
-  </label>
-  <select ng-required="required">
-    <option selected="selected" value="0">Select shipping option</option>
-    <option ng-repeat="shippingOption in shippingOptions">{{shippingOption.type}}</option>
-  </select>
+  <div id="checkout-info">
+    <label>Number:
+      <input type="number" name="input" ng-model="deliveriesNum" min="1" required>
+    </label>
+    <select ng-required="required">
+      <option selected="selected" value="0">Select shipping option</option>
+      <option ng-repeat="shippingOption in shippingOptions">{{shippingOption.type}}</option>
+    </select>
 
-  <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}">
-    <input placeholder="choose a delivery date" type="text"/>
-  </datepicker>
-  <p> Total Price &pound;</p>
+    <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}">
+      <input placeholder="choose a delivery date" type="text"/>
+    </datepicker>
+    <p> Total Price &pound;</p>
+  </div>
 
 </div>

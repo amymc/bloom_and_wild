@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   '720kb.datepicker',
+  'smoothScroll',
   'myApp.checkout'
 ]).
 config(['$routeProvider', function($routeProvider) {
