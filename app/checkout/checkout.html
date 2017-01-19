@@ -16,15 +16,10 @@
         {{shippingOption.type}}
       </option>
     </select>
-
     <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}" >
-      <input ng-model="deliveryDate" ng-change="calculateTotal()" placeholder="choose a delivery date" type="text"/>
+      <input ng-model="deliveryDate" ng-change="checkDate(deliveryDate)" placeholder="choose a delivery date" type="text"/>
     </datepicker>
-    <p> Total Price &pound;
-      <span id='checkout-total'>
-        0.00
-      </span>
+    <p> Total Price &pound; {{totalPrice | number:2}}
     </p>
   </div>
-
 </div>
