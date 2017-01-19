@@ -1,5 +1,16 @@
 /* app css stylesheet */
 
-.some-class {
-  color: red;
+.checkout-grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
 }
+
+.checkout-grid__item {
+  width: 33%;
+}
+
+.checkout-grid__item-image {
+  width: 100%;
+}
+

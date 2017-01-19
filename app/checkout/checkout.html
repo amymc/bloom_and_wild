@@ -1,1 +1,18 @@
-<p class="some-class">{{checkoutCopy}}</p>
+<div ng-controller="Checkout">
+  <ul class='checkout-grid'>
+    <li class='checkout-grid__item' ng-repeat="bouquet in bouquets">
+      <span>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</span>
+      <img class='checkout-grid__item-image' alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
+    </li>
+  </ul>
+  <label>Number:
+    <input type="number" name="input" ng-model="deliveriesNum" min="1" required>
+  </label>
+  <select ng-required="required">
+    <option selected="selected" value="0">Select shipping option</option>
+    <option ng-repeat="shippingOption in shippingOptions">{{shippingOption.type}}</option>
+  </select>
+
+  <p> Total Price &pound;</p>
+
+</div>
