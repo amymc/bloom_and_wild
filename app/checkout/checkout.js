@@ -10,10 +10,9 @@ angular.module('myApp.checkout', ['ngRoute'])
 }])
 
 .controller('Checkout', ['$scope', 'FlowersEndpoint', function($scope, FlowersEndpoint) {
-  $scope.checkoutCopy = "This is the partial for checkout, your implementation goes here";
   $scope.bouquets = FlowersEndpoint.collections[0].skus;
 
-  $scope.deliveriesNum = 1;
+  $scope.bouquetQuantity = 1;
   $scope.currentDate = new Date().toString();
 
   $scope.shippingOptions = [
@@ -31,5 +30,15 @@ angular.module('myApp.checkout', ['ngRoute'])
     }
   ];
 
-  console.log('flowers', $scope.bouquets);
+  $scope.getSelectedBouquet = function(bouquetCost) {
+    $scope.bouquetCost = bouquetCost;
+  };
+
+  $scope.calculateTotal = function() {
+    if ($scope.deliveryDate && $scope.shippingCost && $scope.bouquetQuantity) {
+      $scope.totalPrice = ($scope.bouquetCost * $scope.bouquetQuantity) + parseInt($scope.shippingCost);
+      console.log('$scope.totalPrice ', $scope.totalPrice );
+    }
+  };
+
 }]);

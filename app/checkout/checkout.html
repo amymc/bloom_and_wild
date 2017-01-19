@@ -3,22 +3,28 @@
     <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
       <span>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</span>
       <img class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
-      <button scroll-to="checkout-info">Order {{bouquet.name}}</button>
+      <button ng-click="getSelectedBouquet(bouquet.pricings[0].amount)">Order {{bouquet.name}}</button>
     </li>
   </ul>
   <div id="checkout-info">
-    <label>Number:
-      <input type="number" name="input" ng-model="deliveriesNum" min="1" required>
+    <label>Select quantity of bouquets:
+      <input ng-model="bouquetQuantity" ng-change="calculateTotal()" type="number" name="input" min="1" required>
     </label>
-    <select ng-required="required">
-      <option selected="selected" value="0">Select shipping option</option>
-      <option ng-repeat="shippingOption in shippingOptions">{{shippingOption.type}}</option>
+    <select ng-required="required" ng-model="shippingCost" ng-change="calculateTotal()">
+      <option value="" disabled selected>Select shipping option</option>
+      <option ng-repeat="shippingOption in shippingOptions" value={{shippingOption.price}}>
+        {{shippingOption.type}}
+      </option>
     </select>
 
-    <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}">
-      <input placeholder="choose a delivery date" type="text"/>
+    <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}" >
+      <input ng-model="deliveryDate" ng-change="calculateTotal()" placeholder="choose a delivery date" type="text"/>
     </datepicker>
-    <p> Total Price &pound;</p>
+    <p> Total Price &pound;
+      <span id='checkout-total'>
+        0.00
+      </span>
+    </p>
   </div>
 
 </div>
