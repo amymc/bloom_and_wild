@@ -3,7 +3,7 @@
     <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
       <span>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</span>
       <img class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
-      <button ng-click="getSelectedBouquet(bouquet.pricings[0].amount)">Order {{bouquet.name}}</button>
+      <button scroll-to="checkout-info" callback-before="getSelectedBouquet(bouquet.pricings[0].amount)">Order {{bouquet.name}}</button>
     </li>
   </ul>
   <div id="checkout-info">

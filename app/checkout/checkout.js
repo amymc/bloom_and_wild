@@ -25,7 +25,7 @@ angular.module('myApp.checkout', ['ngRoute'])
       price: 5.00
     },
     {
-      type: 'DPD Morning Courier - (£6.00)',
+      type: 'DPD Morning Courier (£6.00)',
       price: 6.00
     }
   ];
@@ -35,7 +35,8 @@ angular.module('myApp.checkout', ['ngRoute'])
   };
 
   $scope.calculateTotal = function() {
-    if ($scope.deliveryDate && $scope.shippingCost && $scope.bouquetQuantity) {
+    console.log('$scope.bouquetQuantity', $scope.bouquetCost);
+    if ($scope.deliveryDate && $scope.shippingCost && $scope.bouquetQuantity && $scope.bouquetCost) {
       $scope.totalPrice = ($scope.bouquetCost * $scope.bouquetQuantity) + parseInt($scope.shippingCost);
       console.log('$scope.totalPrice ', $scope.totalPrice );
     }
