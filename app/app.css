@@ -7,13 +7,12 @@
 }
 
 .checkout-grid__item {
+  position: relative;
   width: calc(33% - 10px);
   background-color: #EEECEF;
-  padding-bottom: 10px;
   margin: 5px;
-
-  position: relative;
   padding-bottom: 100px;
+  text-align: center;
 }
 
 .checkout-grid__item-image {
@@ -25,6 +24,10 @@
   position: absolute;
   bottom: 10px;
   width: 100%;
+}
+
+.checkout-grid__item-text {
+  margin-top: 50%;
 }
 
 .checkout-grid__item-button {

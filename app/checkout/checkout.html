@@ -1,7 +1,10 @@
 <div ng-controller="Checkout">
   <ul class="checkout-grid">
     <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
-      <img class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
+      <img ng-if="bouquet.default_bouquet.image_urls.website_small" class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
+      <p class="checkout-grid__item-text" ng-if="!bouquet.default_bouquet.image_urls.website_small">
+        No Image available
+      </p>
       <div class="checkout-grid__item-info">
         <p>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</p>
         <button class="checkout-grid__item-button" scroll-to="checkout-info" callback-before="getSelectedBouquet(bouquet.pricings[0].amount)">
