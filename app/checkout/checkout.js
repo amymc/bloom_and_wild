@@ -31,8 +31,12 @@ angular.module('myApp.checkout', ['ngRoute'])
     }
   ];
 
-  $scope.getSelectedBouquet = function(bouquetCost) {
+  $scope.getSelectedBouquet = function(selectedBouquet, bouquetCost) {
     $scope.bouquetCost = bouquetCost;
+    $scope.selectedBouquet = selectedBouquet;
+    $scope.$apply();
+
+    $scope.calculateTotal();
   };
 
   $scope.checkDate  = function(deliveryDate) {
@@ -42,16 +46,12 @@ angular.module('myApp.checkout', ['ngRoute'])
     var isChristmas = ((month === 0 && day < 3) || (month === 11 && day > 22));
 
     $scope.surcharge = isChristmas ? 3.50 : 0;
-
-    console.log('$scope.surcharge', $scope.surcharge);
     $scope.calculateTotal();
   };
 
   $scope.calculateTotal = function() {
-    console.log('$scope.bouquetQuantity', $scope.bouquetCost);
     if ($scope.deliveryDate && $scope.shippingCost && $scope.bouquetQuantity && $scope.bouquetCost) {
       $scope.totalPrice = ($scope.bouquetCost * $scope.bouquetQuantity) + parseInt($scope.shippingCost) + $scope.surcharge;
-      console.log('$scope.totalPrice ', $scope.totalPrice );
     }
   };
 

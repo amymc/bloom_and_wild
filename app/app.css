@@ -1,14 +1,36 @@
 /* app css stylesheet */
 
+select, input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  border: 2px solid #000;
+  border-radius: 3px;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.input--number {
+  width: 30px;
+}
+
+.checkout {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .checkout-grid {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
+  margin: 10px;
+  padding: 0;
 }
 
 .checkout-grid__item {
   position: relative;
-  width: calc(33% - 10px);
+  width: 100%;
   background-color: #EEECEF;
   margin: 5px;
   padding-bottom: 100px;
@@ -27,7 +49,7 @@
 }
 
 .checkout-grid__item-text {
-  margin-top: 50%;
+  margin-top: calc(50% - 14px);
 }
 
 .checkout-grid__item-button {
@@ -43,4 +65,36 @@
 .checkout-grid__item-button:hover, 
 .checkout-grid__item-button:focus {
   background: #4d4d4d;
+}
+
+.checkout-info {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 0 15px;
+}
+
+.checkout-info--large {
+  font-size: 20px;
+}
+
+.checkout-info__row {
+  margin: 15px 0;
+  clear: both;
+}
+
+.checkout-datepicker {
+  max-width: 300px;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 500px) {
+  .checkout-grid__item {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (min-width: 800px) {
+  .checkout-grid__item {
+    width: calc(33.33% - 10px);
+  }
 }

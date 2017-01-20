@@ -1,32 +1,42 @@
-<div ng-controller="Checkout">
+<div class="checkout" ng-controller="Checkout">
   <ul class="checkout-grid">
     <li class="checkout-grid__item" ng-repeat="bouquet in bouquets">
       <img ng-if="bouquet.default_bouquet.image_urls.website_small" class="checkout-grid__item-image" alt={{bouquet.name}} ng-src="{{bouquet.default_bouquet.image_urls.website_small}}" />
-      <p class="checkout-grid__item-text" ng-if="!bouquet.default_bouquet.image_urls.website_small">
+      <p ng-if="!bouquet.default_bouquet.image_urls.website_small" class="checkout-grid__item-text">
         No Image available
       </p>
       <div class="checkout-grid__item-info">
         <p>{{bouquet.name}} - &pound;{{bouquet.pricings[0].amount}}</p>
-        <button class="checkout-grid__item-button" scroll-to="checkout-info" callback-before="getSelectedBouquet(bouquet.pricings[0].amount)">
+        <button class="checkout-grid__item-button" scroll-to="checkout-info" callback-before="getSelectedBouquet(bouquet.name, bouquet.pricings[0].amount)">
           Order {{bouquet.name}}
         </button>
       </div>
     </li>
   </ul>
-  <div id="checkout-info">
-    <label>Select quantity of bouquets:
-      <input ng-model="bouquetQuantity" ng-change="calculateTotal()" type="number" name="input" min="1" required>
+  <div id="checkout-info" class="checkout-info">
+    <p ng-if="selectedBouquet">
+      You're buying {{selectedBouquet}}
+    </p>
+    <label class="checkout-info__row">How many bouquets do you want?
+      <input class="input--number" ng-model="bouquetQuantity" ng-change="calculateTotal()" type="number" name="input" min="1" required>
     </label>
-    <select ng-required="required" ng-model="shippingCost" ng-change="calculateTotal()">
-      <option value="" disabled selected>Select shipping option</option>
-      <option ng-repeat="shippingOption in shippingOptions" value={{shippingOption.price}}>
-        {{shippingOption.type}}
-      </option>
-    </select>
-    <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}" >
-      <input ng-model="deliveryDate" ng-change="checkDate(deliveryDate)" placeholder="choose a delivery date" type="text"/>
-    </datepicker>
-    <p> Total Price &pound; {{totalPrice | number:2}}
+    <div class="checkout-info__row">
+      How do you want it delivered?
+      <select ng-required="required" ng-model="shippingCost" ng-change="calculateTotal()">
+        <option value="" disabled selected>Select shipping option</option>
+        <option ng-repeat="shippingOption in shippingOptions" value={{shippingOption.price}}>
+          {{shippingOption.type}}
+        </option>
+      </select>
+    </div>
+    <div class="checkout-datepicker checkout-info__row">
+      When do you want it delivered?
+      <datepicker date-format="MMMM d, yyyy" date-min-limit="{{currentDate}}" >
+        <input ng-model="deliveryDate" ng-change="checkDate(deliveryDate)" placeholder="choose a delivery date" type="text"/>
+      </datepicker>
+    </div>
+    <p class="checkout-info__row checkout-info--large"> 
+      Total Price &pound; {{totalPrice | number:2}}
     </p>
   </div>
 </div>
